@@ -2,26 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-const PHRASES = [
-  "Full-Stack Developer · skala produksi",
-  "Fintech, pemerintahan & billing volume tinggi",
-  "React · NestJS · Laravel · Node.js",
-  "Microservices · AI (OpenAI) · real-time chat",
-  "Mobile: React Native & Flutter",
-] as const;
-
 const TYPE_MS = 36;
 const HOLD_MS = 2400;
 const DELETE_MS = 20;
 const BETWEEN_MS = 380;
 
-export function Typewriter({ className }: { className?: string }) {
+export function Typewriter({
+  className,
+  phrases,
+}: {
+  className?: string;
+  phrases: readonly string[];
+}) {
   const [line, setLine] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typing, setTyping] = useState(true);
 
   useEffect(() => {
-    const full = PHRASES[phraseIndex % PHRASES.length];
+    if (phrases.length === 0) return;
+    const full = phrases[phraseIndex % phrases.length] ?? "";
     let t: ReturnType<typeof setTimeout>;
 
     if (typing) {
@@ -34,13 +33,13 @@ export function Typewriter({ className }: { className?: string }) {
       t = setTimeout(() => setLine(line.slice(0, -1)), DELETE_MS);
     } else {
       t = setTimeout(() => {
-        setPhraseIndex((i) => (i + 1) % PHRASES.length);
+        setPhraseIndex((i) => (i + 1) % phrases.length);
         setTyping(true);
       }, BETWEEN_MS);
     }
 
     return () => clearTimeout(t);
-  }, [line, phraseIndex, typing]);
+  }, [line, phraseIndex, typing, phrases]);
 
   return (
     <p className={`typewriter-line ${className ?? ""}`} aria-live="polite">

@@ -8,15 +8,9 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useDict } from "@/components/LocaleProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
-
-const NAV_LINKS = [
-  { href: "#tentang", label: "Tentang" },
-  { href: "#pengalaman", label: "Pengalaman" },
-  { href: "#proyek", label: "Proyek" },
-  { href: "#skills", label: "Skills" },
-  { href: "#kontak", label: "Kontak" },
-] as const;
 
 function MoreIcon() {
   return (
@@ -29,6 +23,15 @@ function MoreIcon() {
 }
 
 export function SiteHeader() {
+  const d = useDict();
+  const navLinks = [
+    { href: "#tentang", label: d.nav.about },
+    { href: "#pengalaman", label: d.nav.experience },
+    { href: "#proyek", label: d.nav.projects },
+    { href: "#skills", label: d.nav.skills },
+    { href: "#kontak", label: d.nav.contact },
+  ] as const;
+
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [headerH, setHeaderH] = useState(0);
@@ -84,18 +87,18 @@ export function SiteHeader() {
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Menu navigasi"
+        aria-label={d.nav.mobileDialog}
         className="mobile-nav-portal fixed right-0 bottom-0 left-0 z-[100] flex flex-col md:hidden"
         style={{ top: Math.max(headerH, 0) }}
       >
         <button
           type="button"
           className="mobile-nav-backdrop absolute inset-0 -z-10 border-0 bg-[color-mix(in_srgb,var(--ink)_94%,transparent)] backdrop-blur-md"
-          aria-label="Tutup menu"
+          aria-label={d.nav.closeMenuBackdrop}
           onClick={close}
         />
         <div className="relative flex flex-1 flex-col gap-1 overflow-y-auto overscroll-contain px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
-          {NAV_LINKS.map(({ href, label }) => (
+          {navLinks.map(({ href, label }) => (
             <a key={href} className="mobile-nav-link" href={href} onClick={close}>
               {label}
             </a>
@@ -120,17 +123,19 @@ export function SiteHeader() {
 
           <nav
             className="hidden flex-wrap items-center gap-2 text-sm md:flex"
-            aria-label="Navigasi utama"
+            aria-label={d.nav.main}
           >
-            {NAV_LINKS.map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <a key={href} className="link-pill" href={href}>
                 {label}
               </a>
             ))}
+            <LanguageToggle />
             <ThemeToggle />
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 md:hidden">
+            <LanguageToggle />
             <ThemeToggle />
             <button
               ref={btnRef}
@@ -138,7 +143,7 @@ export function SiteHeader() {
               className="mobile-nav-trigger inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--toggle-border)] bg-[var(--toggle-bg)] text-[var(--snow)] transition hover:border-[var(--signal)] hover:text-[var(--signal)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)] active:scale-[0.98]"
               aria-expanded={open}
               aria-controls={panelId}
-              aria-label={open ? "Tutup menu navigasi" : "Buka menu navigasi"}
+              aria-label={open ? d.nav.closeMenu : d.nav.openMenu}
               onClick={() => setOpen((v) => !v)}
             >
               <MoreIcon />

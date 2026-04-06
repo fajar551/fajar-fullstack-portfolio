@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Space_Mono } from "next/font/google";
+import { LocaleProvider } from "@/components/LocaleProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -48,8 +49,10 @@ export default function RootLayout({
     <html lang="id" className={`${bricolage.variable} ${spaceMono.variable} antialiased`} suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <div className="aurora-canvas" aria-hidden />
-          {children}
+          <LocaleProvider>
+            <div className="aurora-canvas" aria-hidden />
+            {children}
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>
