@@ -1,6 +1,6 @@
 import Image from "next/image";
 import TechMarquee from "@/components/TechMarquee";
-import { RotatingTagline } from "@/components/RotatingTagline";
+import { Typewriter } from "@/components/Typewriter";
 
 const GITHUB = "https://github.com/fajar551";
 const LINKEDIN = "https://www.linkedin.com/in/fajarhabib551";
@@ -48,7 +48,7 @@ export default function Home() {
                 Zaelani
               </span>
             </h1>
-            <RotatingTagline className="mt-6" />
+            <Typewriter className="mt-6" />
             <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-[var(--mist)]">
               Full-Stack Developer dengan 3+ tahun pengalaman menghadirkan solusi web dan mobile yang
               skalabel untuk sektor fintech dan pemerintahan. Terbiasa mengoptimalkan sistem volume
