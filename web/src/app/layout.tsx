@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Space_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -20,9 +21,10 @@ const spaceMono = Space_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#070b12",
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#070b12" }, { color: "#ffffff" }],
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -43,10 +45,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${bricolage.variable} ${spaceMono.variable} antialiased`}>
+    <html lang="id" className={`${bricolage.variable} ${spaceMono.variable} antialiased`} suppressHydrationWarning>
       <body>
-        <div className="aurora-canvas" aria-hidden />
-        {children}
+        <ThemeProvider>
+          <div className="aurora-canvas" aria-hidden />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
