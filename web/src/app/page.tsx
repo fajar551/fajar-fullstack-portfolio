@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Typewriter } from "@/components/Typewriter";
+import { RotatingTagline } from "@/components/RotatingTagline";
 
 const TechMarquee = dynamic(() => import("@/components/TechMarquee"), {
   loading: () => (
@@ -57,7 +57,7 @@ export default function Home() {
                 Zaelani
               </span>
             </h1>
-            <Typewriter className="mt-6 min-h-[3.25rem]" />
+            <RotatingTagline className="mt-6" />
             <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-[var(--mist)]">
               Full-Stack Developer dengan 3+ tahun pengalaman menghadirkan solusi web dan mobile yang
               skalabel untuk sektor fintech dan pemerintahan. Terbiasa mengoptimalkan sistem volume
@@ -100,7 +100,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-[380px] flex-col items-center gap-8 lg:mx-0 lg:max-w-none">
+          <div className="relative mx-auto flex w-full max-w-[380px] flex-col items-center lg:mx-0 lg:max-w-none">
             <div className="orbit-accent top-[18%]" />
             <div className="relative w-[min(100%,280px)]">
               <span className="hero-ring" />
@@ -116,19 +116,6 @@ export default function Home() {
                 fetchPriority="high"
               />
             </div>
-            <div className="polaroid polaroid--tilt-right w-[min(100%,240px)]">
-              <Image
-                src="/profile-square.webp"
-                alt="Fajar — potret formal frame kotak"
-                width={400}
-                height={400}
-                sizes="240px"
-                quality={80}
-                loading="lazy"
-                decoding="async"
-                className="h-auto w-full object-cover"
-              />
-            </div>
           </div>
         </section>
 
@@ -140,12 +127,12 @@ export default function Home() {
           <TechMarquee />
         </section>
 
-        {/* Tentang + cutout */}
+        {/* Tentang + potret formal */}
         <section id="tentang" className="section-defer mt-24 scroll-mt-24">
           <h2 className="section-title text-2xl font-semibold text-[var(--snow)]">Tentang</h2>
           <div className="mt-8 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div className="relative flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[320px]">
+              <div className="relative w-full max-w-[280px]">
                 <div
                   className="pointer-events-none absolute -inset-6 rounded-[2rem] opacity-60 blur-2xl"
                   style={{
@@ -153,17 +140,20 @@ export default function Home() {
                       "radial-gradient(circle at 30% 30%, rgba(92,225,196,0.25), transparent 55%), radial-gradient(circle at 70% 60%, rgba(192,132,252,0.2), transparent 50%)",
                   }}
                 />
-                <Image
-                  src="/profile-cutout.webp"
-                  alt="Fajar — foto tanpa background"
-                  width={640}
-                  height={640}
-                  sizes="(max-width: 1024px) min(92vw, 360px), 320px"
-                  quality={82}
-                  loading="lazy"
-                  decoding="async"
-                  className="relative z-[1] w-full object-contain drop-shadow-xl"
-                />
+                <div className="polaroid polaroid--tilt-right relative z-[1] w-full">
+                  <Image
+                    src="/profile-square.webp"
+                    alt="Fajar — potret formal frame kotak"
+                    width={400}
+                    height={400}
+                    sizes="(max-width: 1024px) min(92vw, 280px), 280px"
+                    quality={80}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                    className="polaroid__img object-cover object-top"
+                  />
+                </div>
               </div>
             </div>
             <div className="slab p-8">

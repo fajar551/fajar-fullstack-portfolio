@@ -119,6 +119,61 @@ body {
   letter-spacing: 0.02em;
 }
 
+/* Tagline hero — rotasi frasa (ganti typewriter JS) */
+.rotating-tagline {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+  color: var(--mist);
+  letter-spacing: 0.02em;
+}
+
+.rotating-tagline__track {
+  position: relative;
+  display: inline-block;
+  min-height: 3.25rem;
+  min-width: min(100%, 36rem);
+  vertical-align: top;
+}
+
+.rotating-tagline__phrase {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max-content;
+  max-width: min(100vw - 3rem, 36rem);
+  opacity: 0;
+  animation-name: rotating-tagline-cycle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotating-tagline-cycle {
+  0%,
+  1.5% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  2.5%,
+  16.5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  18%,
+  20% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  21%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .typewriter-caret {
   display: inline-block;
   margin-left: 2px;
@@ -272,7 +327,7 @@ body {
   animation: title-nudge 0.7s ease forwards;
 }
 
-/* Foto polaroid */
+/* Bingkai polaroid — potret formal frame kotak (Tentang) */
 .polaroid {
   background: linear-gradient(180deg, #f3f6ff 0%, #dfe6f7 100%);
   padding: 0.65rem 0.65rem 1.35rem;
@@ -285,6 +340,13 @@ body {
 
 .polaroid--tilt-right {
   transform: rotate(2deg);
+}
+
+.polaroid .polaroid__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 /* Link pill */
@@ -389,5 +451,25 @@ body {
     animation: none;
     opacity: 1;
   }
+  .rotating-tagline__phrase {
+    animation: none !important;
+    opacity: 0;
+    position: static;
+    width: auto;
+    max-width: none;
+  }
+  .rotating-tagline__phrase:first-of-type {
+    opacity: 1;
+  }
+  .rotating-tagline__phrase:not(:first-of-type) {
+    display: none;
+  }
+  .rotating-tagline__track {
+    min-width: 0;
+  }
+  .polaroid,
+  .polaroid--tilt-right {
+    transform: none;
+  }
 }
- 
+

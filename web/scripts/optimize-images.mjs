@@ -17,5 +17,4 @@ async function toWebp(filename, maxEdge, quality) {
 }
 
 await toWebp("profile-round.png", 560, 82);
-await toWebp("profile-cutout.png", 640, 84);
 await toWebp("profile-square.jpeg", 480, 82);
