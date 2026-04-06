@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Space_Mono } from "next/font/google";
 import { LocaleProvider } from "@/components/LocaleProvider";
+import { ScrollChrome } from "@/components/ScrollChrome";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -51,6 +52,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LocaleProvider>
             <div className="aurora-canvas" aria-hidden />
+            <ScrollChrome />
             {children}
           </LocaleProvider>
         </ThemeProvider>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useId } from "react";
 import { useDict, useLocale } from "@/components/LocaleProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 import TechMarquee from "@/components/TechMarquee";
@@ -18,6 +19,7 @@ import {
 export function HomePageContent() {
   const { locale } = useLocale();
   const d = useDict();
+  const heroRingGradId = `heroCvRing-${useId().replace(/:/g, "")}`;
 
   return (
     <div className="relative min-w-0 overflow-x-clip">
@@ -82,8 +84,32 @@ export function HomePageContent() {
 
           <div className="relative mx-auto flex w-full max-w-[min(100%,380px)] flex-col items-center overflow-x-clip lg:mx-0 lg:max-w-none">
             <div className="orbit-accent top-[18%]" />
-            <div className="relative w-full max-w-[280px]">
-              <span className="hero-ring" />
+            <div className="hero-portrait-frame relative w-full max-w-[280px]">
+              <svg className="hero-ring-svg" viewBox="0 0 100 100" aria-hidden>
+                <defs>
+                  <linearGradient
+                    id={heroRingGradId}
+                    gradientUnits="userSpaceOnUse"
+                    x1="12"
+                    y1="88"
+                    x2="88"
+                    y2="12"
+                  >
+                    <stop offset="0%" stopColor="var(--ember)" />
+                    <stop offset="100%" stopColor="var(--btn-cv-grad-end)" />
+                  </linearGradient>
+                </defs>
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="46"
+                  fill="none"
+                  stroke={`url(#${heroRingGradId})`}
+                  strokeWidth="2.1"
+                  strokeDasharray="9 12"
+                  strokeLinecap="round"
+                />
+              </svg>
               <Image
                 src="/profile-round.webp"
                 alt={d.about.imgRoundAlt}
@@ -91,7 +117,7 @@ export function HomePageContent() {
                 height={560}
                 sizes="(max-width: 1024px) min(92vw, 380px), 280px"
                 quality={78}
-                className="hero-portrait-drop relative z-[1] w-full"
+                className="hero-portrait-drop relative z-[1] w-full rounded-full"
                 priority
                 fetchPriority="high"
               />

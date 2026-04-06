@@ -18,6 +18,10 @@ const id = {
     id: "Indonesia",
     en: "English",
   },
+  scroll: {
+    toTop: "Kembali ke atas halaman",
+    progressLabel: "Progres scroll halaman",
+  },
   hero: {
     roleLocation: "Full-Stack Developer · Bandung",
     intro:
@@ -176,6 +180,10 @@ export const en: Dictionary = {
     groupLabel: "Choose language",
     id: "Indonesia",
     en: "English",
+  },
+  scroll: {
+    toTop: "Back to top of page",
+    progressLabel: "Page scroll progress",
   },
   hero: {
     roleLocation: "Full-Stack Developer · Bandung",

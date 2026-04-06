@@ -35,8 +35,6 @@
   --skill-chip-bg: rgba(15, 23, 42, 0.04);
   --skill-chip-border: rgba(15, 23, 42, 0.1);
 
-  --hero-ring: rgba(13, 148, 136, 0.32);
-
   --orbit-line-opacity: 0.42;
 
   --btn-github-tl: #f1f5f9;
@@ -102,8 +100,6 @@ html.dark {
 
   --skill-chip-bg: rgba(255, 255, 255, 0.04);
   --skill-chip-border: rgba(125, 211, 252, 0.1);
-
-  --hero-ring: rgba(92, 225, 196, 0.35);
 
   --orbit-line-opacity: 0.35;
 
@@ -566,29 +562,23 @@ html.dark .mobile-nav-link {
   color: var(--mist);
 }
 
-/* Hero ring */
-@keyframes hero-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 0.85;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
+/* Bingkai putus-putus foto hero — gradien tombol CV (statis) */
+.hero-portrait-frame {
+  position: relative;
+  aspect-ratio: 1;
 }
 
-.hero-ring {
+.hero-ring-svg {
   position: absolute;
   inset: -8%;
-  border-radius: 50%;
-  border: 1px dashed var(--hero-ring);
-  animation: hero-pulse 6s ease-in-out infinite;
+  z-index: 2;
+  width: 116%;
+  height: 116%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
   pointer-events: none;
+  overflow: visible;
 }
 
 /* Glow di belakang polaroid — mengikuti tema */
@@ -601,6 +591,72 @@ html.dark .mobile-nav-link {
 /* Drop shadow foto hero — lebih lembut di mode terang */
 .hero-portrait-drop {
   filter: drop-shadow(var(--hero-portrait-drop));
+}
+
+/* Progres scroll di tepi atas + tombol kembali ke atas */
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 5px;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.scroll-progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: linear-gradient(120deg, var(--ember), var(--btn-cv-grad-end));
+  transition: transform 0.1s ease-out;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 199;
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ember) 35%, var(--toggle-border));
+  background: var(--toggle-bg);
+  color: var(--ember);
+  box-shadow: var(--shadow-orbit);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.6rem);
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease,
+    transform 0.22s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.scroll-top-btn--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  border-color: color-mix(in srgb, var(--ember) 55%, var(--btn-cv-grad-end));
+  color: color-mix(in srgb, var(--ember) 25%, var(--btn-cv-grad-end));
+  background: color-mix(in srgb, var(--ember) 8%, var(--toggle-bg));
+}
+
+.scroll-top-btn:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
 }
 
 /* Rendering di bawah fold — mengurangi pekerjaan style/layout awal */
@@ -617,8 +673,7 @@ html.dark .mobile-nav-link {
  */
 @media (prefers-reduced-motion: reduce) {
   .aurora-canvas::after,
-  .orbit-accent,
-  .hero-ring {
+  .orbit-accent {
     animation: none !important;
   }
   .section-title {
@@ -635,6 +690,12 @@ html.dark .mobile-nav-link {
   .polaroid,
   .polaroid--tilt-right {
     transform: none;
+  }
+  .scroll-progress-fill {
+    transition: none;
+  }
+  .scroll-top-btn {
+    transition: opacity 0.15s ease, visibility 0.15s ease;
   }
 }
 
