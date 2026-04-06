@@ -1,15 +1,6 @@
-import dynamic from "next/dynamic";
 import Image from "next/image";
+import TechMarquee from "@/components/TechMarquee";
 import { RotatingTagline } from "@/components/RotatingTagline";
-
-const TechMarquee = dynamic(() => import("@/components/TechMarquee"), {
-  loading: () => (
-    <div
-      className="flex h-[5.5rem] items-center justify-center rounded-[var(--radius-slab)] border border-[rgba(125,211,252,0.1)] bg-[rgba(255,255,255,0.03)]"
-      aria-hidden
-    />
-  ),
-});
 
 const GITHUB = "https://github.com/fajar551";
 const LINKEDIN = "https://www.linkedin.com/in/fajarhabib551";
@@ -120,7 +111,10 @@ export default function Home() {
         </section>
 
         {/* Marquee strip */}
-        <section className="section-defer mt-20 slab px-4 py-6" aria-label="Teknologi yang digunakan">
+        <section
+          className="mt-20 slab px-4 py-6"
+          aria-label="Teknologi yang digunakan"
+        >
           <p className="mb-4 text-center font-[family-name:var(--font-space-mono)] text-[0.68rem] uppercase tracking-[0.28em] text-[rgba(159,179,209,0.75)]">
             Orbit stack — loop tanpa putus
           </p>
