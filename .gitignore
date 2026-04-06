@@ -1,0 +1,30 @@
+# Dependencies
+web/node_modules/
+web/.pnp
+web/.pnp.*
+
+# Next.js
+web/.next/
+web/out/
+web/.vercel
+
+# Environment
+web/.env
+web/.env.*
+.env
+.env.*
+
+# Debug & coverage
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+web/pnpm-debug.log*
+web/coverage
+
+# TypeScript / tooling
+web/*.tsbuildinfo
+web/next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db

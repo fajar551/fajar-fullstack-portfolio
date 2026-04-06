@@ -1,0 +1,393 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #070b12;
+  --panel: #0d1424;
+  --panel-2: #121a2e;
+  --line: rgba(125, 211, 252, 0.14);
+  --mist: #9fb3d1;
+  --snow: #eef4ff;
+  --signal: #5ce1c4;
+  --ember: #ff8a5c;
+  --violet-hot: #c084fc;
+  --radius-slab: 18px;
+  --shadow-orbit: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+}
+
+@theme inline {
+  --font-sans: var(--font-bricolage);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--snow);
+  font-family: var(--font-display);
+}
+
+/* Mesh + grain — latar yang tidak generik */
+.aurora-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(900px 500px at 12% -10%, rgba(92, 225, 196, 0.12), transparent 60%),
+    radial-gradient(700px 420px at 88% 0%, rgba(192, 132, 252, 0.1), transparent 55%),
+    radial-gradient(600px 500px at 50% 110%, rgba(255, 138, 92, 0.08), transparent 50%),
+    var(--ink);
+}
+
+.aurora-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  animation: grain-drift 18s linear infinite;
+}
+
+@keyframes grain-drift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-2%) translateY(1%);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Garis orbit halus — keyframes dengan translateX seperti diminta */
+@keyframes orbit-lines {
+  0% {
+    transform: translateX(-3%);
+  }
+  50% {
+    transform: translateX(3%);
+  }
+  100% {
+    transform: translateX(-3%);
+  }
+}
+
+.orbit-accent {
+  position: absolute;
+  width: 140%;
+  height: 1px;
+  left: -20%;
+  background: linear-gradient(90deg, transparent, var(--signal), transparent);
+  opacity: 0.35;
+  animation: orbit-lines 11s ease-in-out infinite;
+}
+
+/* Typewriter caret */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-text {
+  font-family: var(--font-mono);
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+  color: var(--mist);
+  letter-spacing: 0.02em;
+}
+
+.typewriter-caret {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--signal);
+  font-weight: 700;
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* Primary CTAs */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.btn-github {
+  background: linear-gradient(145deg, rgba(18, 26, 46, 0.95), rgba(13, 20, 36, 0.98));
+  color: var(--snow);
+  border-color: rgba(125, 211, 252, 0.28);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.btn-github:hover {
+  transform: translateY(-2px);
+  border-color: rgba(92, 225, 196, 0.55);
+  box-shadow: 0 18px 50px rgba(92, 225, 196, 0.12);
+}
+
+.btn-cv {
+  background: linear-gradient(120deg, var(--ember), #ffb347);
+  color: #1a0a05;
+  box-shadow: 0 14px 45px rgba(255, 138, 92, 0.35);
+}
+
+.btn-cv:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 20px 55px rgba(255, 179, 71, 0.35);
+}
+
+/* Marquee tech — infinite loop via duplikasi + translateX(-50%) */
+@keyframes tech-marquee-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-marquee {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.5rem;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.tech-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: tech-marquee-x 42s linear infinite;
+}
+
+.tech-marquee__track:hover {
+  animation-play-state: paused;
+}
+
+.tech-marquee__row {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  padding-inline: 0.5rem;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.tech-icon-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 4.75rem;
+}
+
+.tech-icon-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.tech-icon-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(159, 179, 209, 0.85);
+  max-width: 5.5rem;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.tech-svg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+/* Kartu / slab panel */
+.slab {
+  background: linear-gradient(160deg, rgba(18, 26, 46, 0.92), rgba(10, 14, 26, 0.88));
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  border-radius: var(--radius-slab);
+  box-shadow: var(--shadow-orbit);
+}
+
+/* Judul section — animasi reveal halus */
+@keyframes title-nudge {
+  0% {
+    transform: translateX(-8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.section-title {
+  animation: title-nudge 0.7s ease forwards;
+}
+
+/* Foto polaroid */
+.polaroid {
+  background: linear-gradient(180deg, #f3f6ff 0%, #dfe6f7 100%);
+  padding: 0.65rem 0.65rem 1.35rem;
+  border-radius: 4px;
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transform: rotate(-2.5deg);
+}
+
+.polaroid--tilt-right {
+  transform: rotate(2deg);
+}
+
+/* Link pill */
+.link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--mist);
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.link-pill:hover {
+  border-color: rgba(192, 132, 252, 0.45);
+  color: var(--snow);
+  transform: translateX(4px);
+}
+
+/* Daftar pengalaman */
+.exp-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .exp-grid {
+    grid-template-columns: 1fr 1.35fr;
+  }
+}
+
+.exp-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(159, 179, 209, 0.85);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Skill chips */
+.skill-chip {
+  display: inline-flex;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(125, 211, 252, 0.1);
+  color: var(--mist);
+}
+
+/* Hero ring */
+@keyframes hero-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+.hero-ring {
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  border: 1px dashed rgba(92, 225, 196, 0.35);
+  animation: hero-pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Rendering di bawah fold — mengurangi pekerjaan style/layout awal */
+.section-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 850px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-canvas::after,
+  .orbit-accent,
+  .tech-marquee__track,
+  .hero-ring {
+    animation: none !important;
+  }
+  .section-title {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  .typewriter-caret {
+    animation: none;
+    opacity: 1;
+  }
+}
+ 
