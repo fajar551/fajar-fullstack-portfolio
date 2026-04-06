@@ -36,7 +36,7 @@ export function HomePageContent() {
               </span>
             </h1>
             <Typewriter key={locale} className="mt-6" phrases={d.typewriter} />
-            <p className="mt-5 max-w-xl text-pretty text-[0.95rem] leading-relaxed text-[var(--mist)] sm:text-base">
+            <p className="max-w-xl text-pretty text-[0.95rem] leading-relaxed text-[var(--mist)] sm:text-base">
               {d.hero.intro}
             </p>
 
