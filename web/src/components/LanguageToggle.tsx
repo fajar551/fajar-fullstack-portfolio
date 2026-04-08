@@ -27,8 +27,8 @@ export function LanguageToggle() {
             onClick={() => setLocale(code)}
             className={
               active
-                ? "min-w-[2rem] rounded-full border border-[color-mix(in_srgb,var(--signal)_55%,var(--toggle-border))] bg-[color-mix(in_srgb,var(--signal)_24%,transparent)] px-2.5 py-1 text-center text-[0.7rem] font-bold uppercase tracking-wide text-[color-mix(in_srgb,var(--signal)_82%,#052e2a)]"
-                : "min-w-[2rem] rounded-full px-2.5 py-1 text-center text-[0.7rem] font-semibold uppercase tracking-wide text-[color-mix(in_srgb,var(--mist)_78%,var(--snow))] transition hover:text-[var(--snow)]"
+                ? "lang-toggle-btn--active min-w-[2rem] rounded-full border px-2.5 py-1 text-center text-[0.7rem] font-bold uppercase tracking-wide"
+                : "min-w-[2rem] rounded-full px-2.5 py-1 text-center text-[0.7rem] font-semibold uppercase tracking-wide text-[var(--snow)] transition hover:opacity-100 dark:text-[var(--mist)]"
             }
             aria-pressed={active}
             aria-label={code === "id" ? lang.id : lang.en}

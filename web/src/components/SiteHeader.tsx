@@ -102,7 +102,7 @@ export function SiteHeader() {
         />
         <div className="relative flex flex-1 flex-col gap-1 overflow-y-auto overscroll-contain px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
           {navLinks.map(({ href, label }) => (
-            <a key={href} className="mobile-nav-link" href={href} onClick={close}>
+            <a key={href} className="mobile-nav-link font-bold" href={href} onClick={close}>
               {label}
             </a>
           ))}
@@ -129,7 +129,7 @@ export function SiteHeader() {
             aria-label={d.nav.main}
           >
             {navLinks.map(({ href, label }) => (
-              <a key={href} className="link-pill" href={href}>
+              <a key={href} className="link-pill font-bold" href={href}>
                 {label}
               </a>
             ))}

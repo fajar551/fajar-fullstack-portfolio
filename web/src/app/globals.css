@@ -326,6 +326,14 @@ body {
   box-shadow: var(--btn-cv-shadow-hover);
 }
 
+/* Toggle bahasa — aktif: gradien sama seperti tombol CV, teks putih */
+.lang-toggle-btn--active {
+  background: linear-gradient(120deg, var(--ember), var(--btn-cv-grad-end));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(234, 88, 12, 0.28);
+}
+
 /* Marquee: dua blok identik, translateX(-50%) = tepat satu set lebar (tanpa custom property di keyframes) */
 @keyframes tech-marquee-x {
   0% {
