@@ -43,7 +43,10 @@ export function SiteHeader() {
   useLayoutEffect(() => {
     const el = headerRef.current;
     if (!el) return;
-    const apply = () => setHeaderH(el.offsetHeight);
+    const apply = () => {
+      const nextHeight = el.offsetHeight;
+      setHeaderH((prev) => (prev === nextHeight ? prev : nextHeight));
+    };
     apply();
     const ro = new ResizeObserver(apply);
     ro.observe(el);

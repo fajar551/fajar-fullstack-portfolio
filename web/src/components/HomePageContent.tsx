@@ -20,6 +20,14 @@ export function HomePageContent() {
   const { locale } = useLocale();
   const d = useDict();
   const heroRingGradId = `heroCvRing-${useId().replace(/:/g, "")}`;
+  const projectImages: Record<string, string[]> = {
+    "AI Chatbot": ["/projects/ai-chatbot/main.webp"],
+    "Attendance App": ["/projects/attendance-app/mobile-1.webp", "/projects/attendance-app/mobile-2.webp"],
+    "CBMS Mobile App": ["/projects/cbms-mobile-app/mobile-1.webp", "/projects/cbms-mobile-app/mobile-2.webp"],
+    "Portal Order Qwords": ["/projects/portal-order/portal order.png"],
+    "Portal Order Golden Fast Network": ["/projects/order-gfn/order%20gfn.png"],
+    "Billing System & WHMCS Integration": ["/projects/whmcs-integration/WHMCS Integration.png"],
+  };
 
   return (
     <div className="relative min-w-0 overflow-x-clip">
@@ -171,48 +179,41 @@ export function HomePageContent() {
           </div>
         </section>
 
-        <section id="pengalaman" className="section-defer mt-16 scroll-mt-28 sm:mt-20 md:mt-24 md:scroll-mt-28">
-          <h2 className="section-title text-xl font-semibold text-[var(--snow)] sm:text-2xl">{d.experience.title}</h2>
-          <div className="mt-8 exp-grid">
-            <article className="slab p-5 sm:p-7">
-              <p className="exp-meta">{d.experience.q1.period}</p>
-              <h3 className="mt-2 text-lg font-semibold text-[var(--snow)]">{d.experience.q1.company}</h3>
-              <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleFtBandung}</p>
-              <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
-                {d.experience.q1.bullets.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="slab p-5 sm:p-7">
-              <p className="exp-meta">{d.experience.tdi1.period}</p>
-              <h3 className="mt-2 text-lg font-semibold text-[var(--snow)]">{d.experience.tdi1.company}</h3>
-              <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleFtBandung}</p>
-              <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
-                {d.experience.tdi1.bullets.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-              <p className="exp-meta mt-8">{d.experience.tdi2.period}</p>
-              <h3 className="mt-2 text-lg font-semibold text-[var(--snow)]">{d.experience.tdi2.company}</h3>
-              <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleIntern}</p>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
-                {d.experience.tdi2.bullets.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </article>
-          </div>
-        </section>
-
         <section id="proyek" className="section-defer mt-16 scroll-mt-28 sm:mt-20 md:mt-24 md:scroll-mt-28">
           <h2 className="section-title text-xl font-semibold text-[var(--snow)] sm:text-2xl">{d.projects.title}</h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {d.projects.items.map((p) => (
               <li key={p.title} className="slab p-5 transition-transform hover:-translate-y-1 sm:p-6">
-                <h3 className="font-semibold text-[var(--snow)]">{p.title}</h3>
+                <div className={`grid gap-2 ${projectImages[p.title]?.length === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
+                  {(projectImages[p.title] ?? ["/profile-square.webp"]).map((imgSrc) => (
+                    <Image
+                      key={`${p.title}-${imgSrc}`}
+                      src={imgSrc}
+                      alt={`${p.title} preview`}
+                      width={640}
+                      height={360}
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className={`w-full rounded-xl ${
+                        (projectImages[p.title]?.length ?? 0) === 2
+                          ? "h-56 bg-[color-mix(in_srgb,var(--ink)_94%,var(--slab-bg-bottom))] object-contain p-1.5"
+                          : "h-56 bg-[color-mix(in_srgb,var(--ink)_94%,var(--slab-bg-bottom))] object-contain p-1.5"
+                      }`}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                    />
+                  ))}
+                </div>
+                <h3 className="mt-4 font-semibold text-[var(--snow)]">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--mist)]">{p.desc}</p>
+                <a
+                  href={PORTFOLIO_EXTERNAL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex text-sm font-medium text-[var(--signal)] underline decoration-[var(--signal)]/50 underline-offset-4 hover:text-[var(--snow)]"
+                >
+                  {d.projects.viewHere}
+                </a>
               </li>
             ))}
           </ul>
@@ -243,25 +244,47 @@ export function HomePageContent() {
           </div>
         </section>
 
-        <section className="section-defer mt-16 grid gap-6 sm:mt-20 sm:gap-8 md:mt-24 lg:grid-cols-2">
-          <div id="pendidikan" className="slab scroll-mt-28 p-5 sm:p-7 md:scroll-mt-28">
-            <h2 className="text-xl font-semibold text-[var(--snow)]">{d.education.title}</h2>
-            <p className="exp-meta mt-4">{d.education.period}</p>
-            <h3 className="mt-2 font-semibold text-[var(--snow)]">{d.education.school}</h3>
-            <p className="mt-1 text-sm text-[var(--mist)]">{d.education.degree}</p>
-            <h4 className="mt-6 text-sm font-semibold text-[var(--snow)]">{d.education.academicTitle}</h4>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[var(--mist)] marker:text-[var(--signal)]">
-              {d.education.academicItems.map((t) => (
-                <li key={t}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="slab p-5 sm:p-7">
-            <h2 className="text-xl font-semibold text-[var(--snow)]">{d.certification.title}</h2>
-            <p className="mt-4 text-sm leading-relaxed text-[var(--mist)]">{d.certification.body}</p>
-            <p className="mt-6 text-xs font-[family-name:var(--font-space-mono)] text-[var(--caption-muted)]">
-              {d.certification.toolchain}
-            </p>
+        <section id="pengalaman" className="section-defer mt-16 scroll-mt-28 sm:mt-20 md:mt-24 md:scroll-mt-28">
+          <h2 className="section-title text-xl font-semibold text-[var(--snow)] sm:text-2xl">{d.experience.title}</h2>
+          <div className="mt-8 exp-grid">
+            <article className="slab p-5 sm:p-7">
+              <h3 className="text-lg font-semibold text-[var(--snow)]">{d.experience.q1.company}</h3>
+              <p className="exp-meta mt-2">{d.experience.q1.period}</p>
+              <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleFtBandung}</p>
+              <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
+                {d.experience.q1.bullets.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="slab p-5 sm:p-7">
+              <h3 className="text-lg font-semibold text-[var(--snow)]">{d.experience.tdi1.company}</h3>
+              <div className="mt-5 space-y-8">
+                <div className="relative pl-8">
+                  <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-[var(--signal)] bg-[var(--surface)]" />
+                  <span className="absolute bottom-[-2.25rem] left-[5px] top-5 w-px bg-[var(--signal)]/45" />
+                  <p className="exp-meta">{d.experience.tdi1.period}</p>
+                  <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleFtBandung}</p>
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
+                    {d.experience.tdi1.bullets.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="relative pl-8">
+                  <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-[var(--signal)] bg-[var(--surface)]" />
+                  <p className="exp-meta">{d.experience.tdi2.period}</p>
+                  <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleIntern}</p>
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
+                    {d.experience.tdi2.bullets.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 

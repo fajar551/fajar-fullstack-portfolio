@@ -42,7 +42,7 @@ const id = {
   ],
   marquee: {
     aria: "Teknologi yang digunakan",
-    caption: "Orbit stack — loop tanpa putus",
+    caption: "Orbit stack",
   },
   about: {
     title: "Tentang",
@@ -93,6 +93,7 @@ const id = {
   },
   projects: {
     title: "Proyek pilihan",
+    viewHere: "Lihat di sini",
     items: [
       {
         title: "AI Chatbot",
@@ -105,6 +106,18 @@ const id = {
       {
         title: "Attendance App",
         desc: "Absensi karyawan Flutter dengan lokasi & multi-shift (~50 DAU).",
+      },
+      {
+        title: "Billing System & WHMCS Integration",
+        desc: "Sistem billing skala besar terintegrasi WHMCS untuk otomatisasi invoice dan provisioning.",
+      },
+      {
+        title: "Portal Order Qwords",
+        desc: "Portal pemesanan layanan Qwords berbasis React + Redux, terintegrasi API order internal.",
+      },
+      {
+        title: "Portal Order Golden Fast Network",
+        desc: "Frontend pemesanan layanan Qwords end-to-end (React + Redux Toolkit), terintegrasi API order internal staging/production.",
       },
     ],
   },
@@ -205,7 +218,7 @@ export const en: Dictionary = {
   ],
   marquee: {
     aria: "Technologies used",
-    caption: "Orbit stack — non-stop loop",
+    caption: "Orbit stack",
   },
   about: {
     title: "About",
@@ -256,6 +269,7 @@ export const en: Dictionary = {
   },
   projects: {
     title: "Featured projects",
+    viewHere: "View here",
     items: [
       {
         title: "AI Chatbot",
@@ -268,6 +282,18 @@ export const en: Dictionary = {
       {
         title: "Attendance App",
         desc: "Flutter staff attendance with location & multi-shift (~50 DAU).",
+      },
+      {
+        title: "Portal Order Qwords",
+        desc: "React + Redux web order portal integrated with internal order APIs.",
+      },
+      {
+        title: "Portal Order Golden Fast Network",
+        desc: "End-to-end Qwords ordering front-end (React + Redux Toolkit), integrated with internal staging/production order APIs.",
+      },
+      {
+        title: "Billing System & WHMCS Integration",
+        desc: "High-scale billing system with WHMCS integration for automated invoicing and provisioning.",
       },
     ],
   },
