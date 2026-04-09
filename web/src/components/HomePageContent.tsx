@@ -137,7 +137,7 @@ export function HomePageContent() {
           className="mt-12 slab px-3 py-5 sm:mt-16 sm:px-4 sm:py-6 md:mt-20"
           aria-label={d.marquee.aria}
         >
-          <p className="mb-4 text-center font-[family-name:var(--font-space-mono)] text-[0.68rem] font-bold uppercase tracking-[0.28em] text-[var(--caption)]">
+          <p className="mb-4 text-center font-[family-name:var(--font-space-mono)] text-[0.68rem] font-bold uppercase tracking-[0.28em] text-black dark:text-[var(--snow)]">
             {d.marquee.caption}
           </p>
           <TechMarquee />
