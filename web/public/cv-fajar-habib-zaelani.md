@@ -1,5 +1,5 @@
 FAJAR HABIB ZAELANI
-fajarhabibzaelani@gmail.com | +62 821 3069 7168 | Bandung, Jawa Barat 40383
+fajarhabibzaelani@gmail.com | [+62 821 3069 7168](https://wa.me/6282130697168) | Bandung, Jawa Barat 40383
 Github | LinkedIn | Portofolio
 DESCRIPTION
 Full-Stack Developer with 3+ years of experience delivering scalable web and mobile solutions for fintech and government sectors. Experienced in building and optimizing high-volume systems (8,400+ monthly invoices, 600+ daily transactions), designing microservices architectures, and developing AI-powered applications using OpenAI integrations. Proficient in modern tech stacks including Laravel, Angular, React, and Spring Boot, with additional expertise in mobile development (React Native, Flutter) and real-time systems. Proven ability to lead end-to-end development, optimize system performance, and mentor junior developers in production environments while maintaining high standards of code quality and system reliability.

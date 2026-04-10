@@ -42,7 +42,7 @@ const id = {
   ],
   marquee: {
     aria: "Teknologi yang digunakan",
-    caption: "Orbit stack",
+    caption: "Teknologi stack",
   },
   about: {
     title: "Tentang",
@@ -94,30 +94,133 @@ const id = {
   projects: {
     title: "Proyek pilihan",
     viewHere: "Lihat di sini",
+    labelKeyFeatures: "Fitur utama",
+    labelTechStack: "Stack teknologi",
+    paginationNav: "Navigasi halaman proyek",
+    paginationPrev: "Sebelumnya",
+    paginationNext: "Berikutnya",
+    paginationPage: (page: number, totalPages: number) => `Halaman ${page} dari ${totalPages}`,
     items: [
       {
-        title: "AI Chatbot",
-        desc: "Chatbot percakapan + WhatsApp API — Node.js & OpenAI API.",
+        id: "ai-chatbot",
+        title: "AI Chatbot (OpenAI + WhatsApp API)",
+        desc:
+          "Mengembangkan chatbot berbasis AI terintegrasi WhatsApp untuk interaksi pelanggan otomatis. Meningkatkan waktu respons dan otomatisasi layanan pelanggan.",
+        images: ["/projects/ai-chatbot/main.webp"],
+        keyFeatures:
+          "Integrasi WhatsApp Business API, percakapan otomatis, peningkatan waktu respons layanan pelanggan.",
+        techStack: "Node.js, OpenAI API, WhatsApp API.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "CBMS Mobile App",
-        desc: "Billing web ke mobile (React Native) dengan notifikasi Firebase.",
+        id: "cbms-mobile",
+        title: "CBMS Mobile App (React Native + Firebase)",
+        desc:
+          "Mengubah sistem billing berbasis web (CBMS) menjadi aplikasi mobile untuk meningkatkan aksesibilitas dan notifikasi pengguna real-time.",
+        images: ["/projects/cbms-mobile-app/mobile-1.webp", "/projects/cbms-mobile-app/mobile-2.webp"],
+        keyFeatures:
+          "Dashboard billing mobile, pemantauan invoice & pelacakan pembayaran, push notification (FCM), integrasi notifikasi WhatsApp, dukungan mobile lintas platform.",
+        techStack: "React Native, Firebase (FCM), Laravel API, WhatsApp API.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "Attendance App",
-        desc: "Absensi karyawan Flutter dengan lokasi & multi-shift (~50 DAU).",
+        id: "attendance-app",
+        title: "Employee Attendance App (Flutter)",
+        desc:
+          "Mengembangkan sistem absensi mobile berbasis lokasi untuk mendukung check-in karyawan di berbagai shift dan lokasi.",
+        images: ["/projects/attendance-app/mobile-1.webp", "/projects/attendance-app/mobile-2.webp"],
+        keyFeatures:
+          "Absensi berbasis lokasi (pelacakan GPS), sistem jadwal multi-shift, pencatatan absensi real-time, antarmuka mobile yang ramah pengguna.",
+        techStack: "Flutter, REST API, GPS/layanan lokasi.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
+        id: "whmcs-billing",
         title: "Billing System & WHMCS Integration",
-        desc: "Sistem billing skala besar terintegrasi WHMCS untuk otomatisasi invoice dan provisioning.",
+        desc:
+          "Mengembangkan dan mengoptimalkan sistem billing skala besar terintegrasi WHMCS untuk menangani volume besar invoice klien dan mengotomatisasi provisioning.",
+        images: ["/projects/whmcs-integration/cover.png"],
+        keyFeatures:
+          "Manajemen invoice, billing & provisioning otomatis, keamanan MFA, integrasi penyedia cloud, arsitektur berbasis REST API.",
+        techStack: "Laravel, WHMCS, Node.js, REST API, OAuth2, MySQL/PostgreSQL.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "Portal Order Qwords",
-        desc: "Portal pemesanan layanan Qwords berbasis React + Redux, terintegrasi API order internal.",
+        id: "portal-order-qwords",
+        title: "Portal Order Qwords (Hosting, Domain, VPS, SSL, Email)",
+        desc:
+          "Portal pemesanan layanan Qwords berbasis web (React + Redux) untuk alur order end-to-end berbagai produk (hosting, domain, VPS, SSL, email), terintegrasi ke API order internal.",
+        images: ["/projects/portal-order/cover.png"],
+        keyFeatures:
+          "Alur pemesanan multi-produk (hosting, domain, VPS, SSL, email), checkout dinamis per order_type, pemilihan metode pembayaran terintegrasi, manajemen state Redux dengan persistensi, integrasi Internal Order API, deployment berbasis environment (staging/production).",
+        techStack: "React 18, React Redux, Bootstrap 5, Sass (SCSS), JavaScript (ES6+).",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "Portal Order Golden Fast Network",
-        desc: "Frontend pemesanan layanan Qwords end-to-end (React + Redux Toolkit), terintegrasi API order internal staging/production.",
+        id: "portal-order-gfn",
+        title: "Portal Order Golden Fast Network (Frontend Order Multi-Product)",
+        desc:
+          "Frontend web untuk pemesanan layanan Qwords end-to-end (hosting, domain, VPS/server, SSL, email, dll), dibangun dengan React + Redux Toolkit, terintegrasi API order internal staging/production lewat konfigurasi.",
+        images: ["/projects/order-gfn/cover.png"],
+        keyFeatures:
+          "Alur pemesanan multi-produk (orderhosting, orderdomain, orderserver, orderdomainbackorder, orderproduct, dll), checkout bertahap dengan state global (cart, step, products, slice per produk).",
+        techStack: "React 18, React Router DOM 6, React Bootstrap, Sass (SCSS), JavaScript (ES6+).",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
+      },
+      {
+        id: "portal-internetan",
+        title: "Portal Internetan (CBMS Auto)",
+        desc: "Portal billing hosting (CBMS Auto, mirip WHMCS) — klien, layanan, domain, invoice, order, pembayaran, dan tiket. Stack Laravel modular + tema. Relabs: portal.internetan.id.",
+        images: ["/projects/portal-internetan/cover.png"],
+        keyFeatures:
+          "Billing end-to-end, gateway pembayaran, admin & API ber-permission, modul/addon & hooks, Virtualizor, tema & order form.",
+        techStack: "PHP, Laravel 7, Blade/Smarty, Bootstrap 4, jQuery, Sass, Laravel Mix.",
+      },
+      {
+        id: "portal-gssl",
+        title: "Portal GSSL (CBMS — Billing & layanan SSL)",
+        desc: "Portal manajemen billing SSL berbasis web (Laravel) untuk operasi CBMS: invoice, produk, pembayaran, dan modul terkait, dengan arsitektur modular.",
+        images: ["/projects/portal-gssl/cover.png"],
+        keyFeatures:
+          "Billing & layanan CBMS, modul gateway/server/registrar, tema & admin, deployment internal (Git).",
+        techStack: "Laravel 7, PHP, MySQL, Bootstrap 4, Sass, jQuery, Laravel Mix.",
+      },
+      {
+        id: "portal-bikin-website",
+        title: "Portal Bikin Website (penjualan & pengelolaan layanan website)",
+        desc: "Portal web untuk pemesanan, billing, dan pengelolaan siklus hidup layanan website pelanggan dalam satu sistem, berbasis Cloud Billing Management System (CBMS) / otomasi billing.",
+        images: ["/projects/portal-bikin-website/cover.png"],
+        keyFeatures:
+          "Pemesanan & manajemen layanan web, billing terpusat, integrasi pembayaran (gateway/modul), arsitektur modular (Laravel Modules), tema & admin, deployment environment (staging/production).",
+        techStack:
+          "Laravel 7, PHP 7.2+, Blade, Bootstrap 4, jQuery, Sass (SCSS), Laravel Mix (Webpack), MySQL.",
+      },
+      {
+        id: "eto-fintech",
+        title: "TI-OAN Fintech (Power your money)",
+        desc: "Aplikasi e-wallet dan e-commerce terintegrasi pertama di Timor-Leste yang dikembangkan untuk menyediakan solusi keuangan digital, manajemen produk, serta ekosistem belanja yang aman. Platform ini dirancang untuk memberdayakan UMKM dan mempercepat pertumbuhan ekonomi digital di Timor-Leste.",
+        images: ["/projects/eto-fintech/cover.png"],
+        keyFeatures:
+          "E-wallet & pembayaran digital, fitur withdraw (penarikan dana), laporan transaksi (reporting), manajemen produk & e-commerce, sistem keamanan transaksi.",
+        techStack: "Java 17, Spring Boot 3, Angular 18, MySQL, REST API.",
+      },
+      {
+        id: "siap-bop-bos",
+        title: "SIAP BOP BOS Jakarta (Sistem Informasi Akuntabilitas Pendidikan)",
+        desc: "Sistem informasi berbasis web yang digunakan untuk mengelola dan memonitor penyaluran serta penggunaan dana BOP dan BOS di Jakarta. Aplikasi ini membantu meningkatkan transparansi, akuntabilitas, serta efisiensi dalam pengelolaan anggaran pendidikan.",
+        images: ["/projects/siap-bop-bos/cover.png"],
+        keyFeatures:
+          "Manajemen data anggaran BOP & BOS, monitoring penyaluran dana, laporan dan audit (reporting), validasi data sekolah, dashboard analitik.",
+        techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
+      },
+      {
+        id: "bku-bud-dki",
+        title: "BKU BUD DKI Jakarta (Buku Kas Umum Bendahara Umum Daerah)",
+        desc: "Sistem informasi berbasis web yang digunakan untuk mengelola pencatatan dan pelaporan transaksi keuangan daerah pada level Bendahara Umum Daerah (BUD) DKI Jakarta. Aplikasi ini mendukung proses administrasi keuangan yang transparan, terstruktur, dan sesuai dengan regulasi pemerintah.",
+        images: ["/projects/bku-bud-dki/cover.png"],
+        keyFeatures:
+          "Pencatatan transaksi keuangan (BKU), pengelolaan kas masuk & keluar, laporan keuangan (reporting), rekonsiliasi data, dashboard monitoring.",
+        techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
       },
     ],
   },
@@ -218,7 +321,7 @@ export const en: Dictionary = {
   ],
   marquee: {
     aria: "Technologies used",
-    caption: "Orbit stack",
+    caption: "Technology stack",
   },
   about: {
     title: "About",
@@ -270,30 +373,133 @@ export const en: Dictionary = {
   projects: {
     title: "Featured projects",
     viewHere: "View here",
+    labelKeyFeatures: "Key features",
+    labelTechStack: "Tech stack",
+    paginationNav: "Project pages",
+    paginationPrev: "Previous",
+    paginationNext: "Next",
+    paginationPage: (page: number, totalPages: number) => `Page ${page} of ${totalPages}`,
     items: [
       {
-        title: "AI Chatbot",
-        desc: "Conversational chatbot + WhatsApp API — Node.js & OpenAI API.",
+        id: "ai-chatbot",
+        title: "AI Chatbot (OpenAI + WhatsApp API)",
+        desc:
+          "Developed an AI-powered chatbot integrated with WhatsApp for automated customer interaction. Improved response time and automated customer service interactions.",
+        images: ["/projects/ai-chatbot/main.webp"],
+        keyFeatures:
+          "WhatsApp Business API integration, automated conversations, faster customer service response times.",
+        techStack: "Node.js, OpenAI API, WhatsApp API.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "CBMS Mobile App",
-        desc: "Billing web to mobile (React Native) with Firebase notifications.",
+        id: "cbms-mobile",
+        title: "CBMS Mobile App (React Native + Firebase)",
+        desc:
+          "Transformed a web-based billing system (CBMS) into a mobile application to improve accessibility and enable real-time user notifications.",
+        images: ["/projects/cbms-mobile-app/mobile-1.webp", "/projects/cbms-mobile-app/mobile-2.webp"],
+        keyFeatures:
+          "Mobile billing dashboard, invoice monitoring & payment tracking, push notifications (Firebase Cloud Messaging), WhatsApp notification integration, cross-platform mobile support.",
+        techStack: "React Native, Firebase (FCM), Laravel API, WhatsApp API.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "Attendance App",
-        desc: "Flutter staff attendance with location & multi-shift (~50 DAU).",
+        id: "attendance-app",
+        title: "Employee Attendance App (Flutter)",
+        desc:
+          "Developed a mobile attendance system with location-based tracking to support employee check-ins across multiple shifts and locations.",
+        images: ["/projects/attendance-app/mobile-1.webp", "/projects/attendance-app/mobile-2.webp"],
+        keyFeatures:
+          "Location-based attendance (GPS tracking), multi-shift scheduling system, real-time attendance recording, user-friendly mobile interface.",
+        techStack: "Flutter, REST API, GPS/location services.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
       },
       {
-        title: "Portal Order Qwords",
-        desc: "React + Redux web order portal integrated with internal order APIs.",
-      },
-      {
-        title: "Portal Order Golden Fast Network",
-        desc: "End-to-end Qwords ordering front-end (React + Redux Toolkit), integrated with internal staging/production order APIs.",
-      },
-      {
+        id: "whmcs-billing",
         title: "Billing System & WHMCS Integration",
-        desc: "High-scale billing system with WHMCS integration for automated invoicing and provisioning.",
+        desc:
+          "Developed and optimized a high-scale billing system integrated with WHMCS to handle large volumes of client invoices and automate provisioning processes.",
+        images: ["/projects/whmcs-integration/cover.png"],
+        keyFeatures:
+          "Invoice management system, automated billing & provisioning, multi-factor authentication (MFA) security, integration with cloud providers, REST API–based architecture.",
+        techStack: "Laravel, WHMCS, Node.js, REST API, OAuth2, MySQL/PostgreSQL.",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
+      },
+      {
+        id: "portal-order-qwords",
+        title: "Portal Order Qwords (Hosting, Domain, VPS, SSL, Email)",
+        desc:
+          "Web-based Qwords service ordering portal (React + Redux) for end-to-end ordering across hosting, domain, VPS, SSL, and email—integrated with internal order APIs.",
+        images: ["/projects/portal-order/cover.png"],
+        keyFeatures:
+          "Multi-product ordering flow (hosting, domain, VPS, SSL, email), dynamic checkout per order_type, integrated payment method selection, Redux-based state management with persistence, internal Order API integration, environment-based deployment (staging/production).",
+        techStack: "React 18, React Redux, Bootstrap 5, Sass (SCSS), JavaScript (ES6+).",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
+      },
+      {
+        id: "portal-order-gfn",
+        title: "Portal Order Golden Fast Network (Frontend Order Multi-Product)",
+        desc:
+          "End-to-end Qwords ordering front-end (hosting, domain, VPS/server, SSL, email, and more) built with React + Redux Toolkit, integrated with internal staging/production order APIs via configuration.",
+        images: ["/projects/order-gfn/cover.png"],
+        keyFeatures:
+          "Multi-product ordering flow (orderhosting, orderdomain, orderserver, orderdomainbackorder, orderproduct, etc.), staged checkout with global state (cart, step, products, per-product slices).",
+        techStack: "React 18, React Router DOM 6, React Bootstrap, Sass (SCSS), JavaScript (ES6+).",
+        projectUrl: "https://fajarhabibzaelani.vercel.app",
+      },
+      {
+        id: "portal-internetan",
+        title: "Portal Internetan (CBMS Auto)",
+        desc: "Hosting billing portal (CBMS Auto, WHMCS-like) — clients, services, domains, invoices, orders, payments, and tickets. Modular Laravel stack + themes. Relabs: portal.internetan.id.",
+        images: ["/projects/portal-internetan/cover.png"],
+        keyFeatures:
+          "End-to-end billing, payment gateways, admin & permissioned API, modules/add-ons & hooks, Virtualizor, themes & order forms.",
+        techStack: "PHP, Laravel 7, Blade/Smarty, Bootstrap 4, jQuery, Sass, Laravel Mix.",
+      },
+      {
+        id: "portal-gssl",
+        title: "Portal GSSL (CBMS — billing & SSL services)",
+        desc: "Web-based SSL billing management portal (Laravel) for CBMS operations: invoices, products, payments, and related modules, with a modular architecture.",
+        images: ["/projects/portal-gssl/cover.png"],
+        keyFeatures:
+          "CBMS billing & services, gateway/server/registrar modules, themes & admin, internal deployment (Git).",
+        techStack: "Laravel 7, PHP, MySQL, Bootstrap 4, Sass, jQuery, Laravel Mix.",
+      },
+      {
+        id: "portal-bikin-website",
+        title: "Portal Bikin Website (website service sales & lifecycle)",
+        desc: "Web portal for ordering, billing, and managing the full lifecycle of customer website services in one system, based on a Cloud Billing Management System (CBMS) / billing automation.",
+        images: ["/projects/portal-bikin-website/cover.png"],
+        keyFeatures:
+          "Web service ordering & management, centralized billing, payment integrations (gateway/modules), modular architecture (Laravel Modules), themes & admin, staging/production deployment.",
+        techStack:
+          "Laravel 7, PHP 7.2+, Blade, Bootstrap 4, jQuery, Sass (SCSS), Laravel Mix (Webpack), MySQL.",
+      },
+      {
+        id: "eto-fintech",
+        title: "TI-OAN Fintech (Power your money)",
+        desc: "Timor-Leste’s first integrated e-wallet and e-commerce platform for digital finance, product management, and secure shopping—designed to empower SMEs and accelerate digital economic growth.",
+        images: ["/projects/eto-fintech/cover.png"],
+        keyFeatures:
+          "E-wallet & digital payments, withdrawals, transaction reporting, product & e-commerce management, transaction security.",
+        techStack: "Java 17, Spring Boot 3, Angular 18, MySQL, REST API.",
+      },
+      {
+        id: "siap-bop-bos",
+        title: "SIAP BOP BOS Jakarta (Education Accountability Information System)",
+        desc: "Web-based information system to manage and monitor disbursement and use of BOP and BOS funds in Jakarta—supporting transparency, accountability, and efficiency in education budgeting.",
+        images: ["/projects/siap-bop-bos/cover.png"],
+        keyFeatures:
+          "BOP & BOS budget data management, disbursement monitoring, reporting & audit, school data validation, analytics dashboards.",
+        techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
+      },
+      {
+        id: "bku-bud-dki",
+        title: "BKU BUD DKI Jakarta (General Cash Book)",
+        desc: "Web-based information system for recording and reporting regional financial transactions at the DKI Jakarta Regional Treasury (BUD). Supports transparent, structured administration aligned with government regulations.",
+        images: ["/projects/bku-bud-dki/cover.png"],
+        keyFeatures:
+          "Financial transaction recording (BKU), cash in/out management, financial reporting, data reconciliation, monitoring dashboards.",
+        techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
       },
     ],
   },

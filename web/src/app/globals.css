@@ -327,6 +327,40 @@ body {
   box-shadow: var(--btn-cv-shadow-hover);
 }
 
+/* Hero: kontak sebagai icon bulat, outline oranye selaras tombol Unduh CV */
+.hero-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--ember) 82%, var(--btn-cv-grad-end));
+  background: transparent;
+  color: var(--ember);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.hero-contact-icon:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--ember) 11%, transparent);
+  border-color: color-mix(in srgb, var(--ember) 55%, var(--btn-cv-grad-end));
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--ember) 28%, transparent);
+  color: color-mix(in srgb, var(--ember) 15%, var(--btn-cv-grad-end));
+}
+
+.hero-contact-icon:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+}
+
 /* Toggle bahasa — aktif: gradien sama seperti tombol CV, teks putih */
 .lang-toggle-btn--active {
   background: linear-gradient(120deg, var(--ember), var(--btn-cv-grad-end));
@@ -444,12 +478,24 @@ body {
   height: 1.65rem;
 }
 
-/* Kartu / slab panel */
+/* Kartu / slab panel — hover lift selaras kartu Proyek pilihan */
 .slab {
   background: linear-gradient(160deg, var(--slab-bg-top), var(--slab-bg-bottom));
   border: 1px solid var(--slab-border);
   border-radius: var(--radius-slab);
   box-shadow: var(--shadow-orbit);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.slab:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 20px 50px color-mix(in srgb, var(--snow) 8%, transparent);
+}
+
+html.dark .slab:hover {
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.42);
 }
 
 /* Judul section — animasi reveal halus */
@@ -475,10 +521,26 @@ body {
   border-radius: 4px;
   box-shadow: var(--polaroid-shadow);
   transform: rotate(-2.5deg);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(-2.5deg) translateY(-0.25rem);
+  box-shadow: 0 28px 58px color-mix(in srgb, var(--snow) 10%, transparent);
 }
 
 .polaroid--tilt-right {
   transform: rotate(2deg);
+}
+
+.polaroid--tilt-right:hover {
+  transform: rotate(2deg) translateY(-0.25rem);
+}
+
+html.dark .polaroid:hover {
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
 }
 
 .polaroid .polaroid__img {
@@ -690,6 +752,12 @@ html.dark .mobile-nav-link {
     opacity: 1;
     transform: none;
   }
+  .slab {
+    transition: none;
+  }
+  .slab:hover {
+    transform: none;
+  }
   .tech-marquee__track {
     animation-duration: 72s !important;
   }
@@ -698,6 +766,11 @@ html.dark .mobile-nav-link {
   }
   .polaroid,
   .polaroid--tilt-right {
+    transform: none;
+    transition: none;
+  }
+  .polaroid:hover,
+  .polaroid--tilt-right:hover {
     transform: none;
   }
   .scroll-progress-fill {
