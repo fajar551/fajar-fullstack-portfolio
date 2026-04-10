@@ -35,25 +35,36 @@ export function ProjectsSection() {
         {slice.map((proj) => {
           const imgs = proj.images.length > 0 ? proj.images : ["/profile-square.webp"];
           const two = imgs.length === 2;
+          const href = proj.projectUrl ?? PORTFOLIO_EXTERNAL;
           return (
             <li key={proj.id} className="slab p-5 sm:p-6">
-              <div className={`grid gap-2 ${two ? "grid-cols-2" : "grid-cols-1"}`}>
-                {imgs.map((imgSrc) => (
-                  <Image
-                    key={`${proj.id}-${imgSrc}`}
-                    src={imgSrc}
-                    alt={`${proj.title} — preview`}
-                    width={640}
-                    height={360}
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="h-56 w-full rounded-xl bg-[color-mix(in_srgb,var(--ink)_94%,var(--slab-bg-bottom))] object-contain p-1.5"
-                    loading="lazy"
-                    decoding="async"
-                    fetchPriority="low"
-                  />
-                ))}
-              </div>
-              <h3 className="mt-4 font-semibold text-[var(--snow)]">{proj.title}</h3>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
+                aria-label={`${proj.title} — ${d.projects.viewHere}`}
+              >
+                <div className={`grid gap-2 ${two ? "grid-cols-2" : "grid-cols-1"}`}>
+                  {imgs.map((imgSrc) => (
+                    <Image
+                      key={`${proj.id}-${imgSrc}`}
+                      src={imgSrc}
+                      alt=""
+                      width={640}
+                      height={360}
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="h-56 w-full rounded-xl bg-[color-mix(in_srgb,var(--ink)_94%,var(--slab-bg-bottom))] object-contain p-1.5 transition-opacity group-hover:opacity-95"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                    />
+                  ))}
+                </div>
+                <h3 className="mt-4 font-semibold text-[var(--snow)] underline-offset-4 transition-colors group-hover:text-[var(--signal)] group-hover:underline group-hover:decoration-[var(--signal)]/50">
+                  {proj.title}
+                </h3>
+              </a>
               <p className="mt-2 text-sm leading-relaxed text-[var(--mist)]">{proj.desc}</p>
               {proj.keyFeatures ? (
                 <div className="mt-3">
@@ -74,7 +85,7 @@ export function ProjectsSection() {
                 </div>
               ) : null}
               <a
-                href={proj.projectUrl ?? PORTFOLIO_EXTERNAL}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex text-sm font-medium text-[var(--signal)] underline decoration-[var(--signal)]/50 underline-offset-4 hover:text-[var(--snow)]"
