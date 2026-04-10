@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useId } from "react";
 import { useDict, useLocale } from "@/components/LocaleProvider";
+import { ProjectsSection } from "@/components/ProjectsSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import TechMarquee from "@/components/TechMarquee";
 import { Typewriter } from "@/components/Typewriter";
@@ -14,20 +15,13 @@ import {
   LOCATION,
   PHONE,
   PORTFOLIO_EXTERNAL,
+  WHATSAPP_URL,
 } from "@/lib/site";
 
 export function HomePageContent() {
   const { locale } = useLocale();
   const d = useDict();
   const heroRingGradId = `heroCvRing-${useId().replace(/:/g, "")}`;
-  const projectImages: Record<string, string[]> = {
-    "AI Chatbot": ["/projects/ai-chatbot/main.webp"],
-    "Attendance App": ["/projects/attendance-app/mobile-1.webp", "/projects/attendance-app/mobile-2.webp"],
-    "CBMS Mobile App": ["/projects/cbms-mobile-app/mobile-1.webp", "/projects/cbms-mobile-app/mobile-2.webp"],
-    "Portal Order Qwords": ["/projects/portal-order/portal order.png"],
-    "Portal Order Golden Fast Network": ["/projects/order-gfn/order%20gfn.png"],
-    "Billing System & WHMCS Integration": ["/projects/whmcs-integration/WHMCS Integration.png"],
-  };
 
   return (
     <div className="relative min-w-0 overflow-x-clip">
@@ -74,18 +68,71 @@ export function HomePageContent() {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2">
-              <a className="link-pill" href={`mailto:${EMAIL}`}>
-                {d.hero.email}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                className="hero-contact-icon"
+                href={`mailto:${EMAIL}`}
+                aria-label={d.hero.email}
+                title={d.hero.email}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                  />
+                </svg>
               </a>
-              <a className="link-pill" href={`tel:${PHONE.replace(/\s/g, "")}`}>
-                {d.hero.phone}
+              <a
+                className="hero-contact-icon"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={d.hero.phone}
+                title={d.hero.phone}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.163-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                  />
+                </svg>
               </a>
-              <a className="link-pill" href={LINKEDIN} target="_blank" rel="noopener noreferrer">
-                {d.hero.linkedin}
+              <a
+                className="hero-contact-icon"
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={d.hero.linkedin}
+                title={d.hero.linkedin}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
               </a>
-              <a className="link-pill" href={PORTFOLIO_EXTERNAL} target="_blank" rel="noopener noreferrer">
-                {d.hero.portfolioCanva}
+              <a
+                className="hero-contact-icon"
+                href={PORTFOLIO_EXTERNAL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={d.hero.portfolioCanva}
+                title={d.hero.portfolioCanva}
+              >
+                <svg width="20" height="20" viewBox="0 0 36 36" aria-hidden>
+                  <text
+                    x="18"
+                    y="18"
+                    dominantBaseline="central"
+                    textAnchor="middle"
+                    fill="currentColor"
+                    fontSize="30"
+                    fontWeight="900"
+                    fontFamily="system-ui, -apple-system, 'Segoe UI', sans-serif"
+                  >
+                    C
+                  </text>
+                </svg>
               </a>
             </div>
           </div>
@@ -179,45 +226,7 @@ export function HomePageContent() {
           </div>
         </section>
 
-        <section id="proyek" className="section-defer mt-16 scroll-mt-28 sm:mt-20 md:mt-24 md:scroll-mt-28">
-          <h2 className="section-title text-xl font-semibold text-[var(--snow)] sm:text-2xl">{d.projects.title}</h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {d.projects.items.map((p) => (
-              <li key={p.title} className="slab p-5 transition-transform hover:-translate-y-1 sm:p-6">
-                <div className={`grid gap-2 ${projectImages[p.title]?.length === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
-                  {(projectImages[p.title] ?? ["/profile-square.webp"]).map((imgSrc) => (
-                    <Image
-                      key={`${p.title}-${imgSrc}`}
-                      src={imgSrc}
-                      alt={`${p.title} preview`}
-                      width={640}
-                      height={360}
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className={`w-full rounded-xl ${
-                        (projectImages[p.title]?.length ?? 0) === 2
-                          ? "h-56 bg-[color-mix(in_srgb,var(--ink)_94%,var(--slab-bg-bottom))] object-contain p-1.5"
-                          : "h-56 bg-[color-mix(in_srgb,var(--ink)_94%,var(--slab-bg-bottom))] object-contain p-1.5"
-                      }`}
-                      loading="lazy"
-                      decoding="async"
-                      fetchPriority="low"
-                    />
-                  ))}
-                </div>
-                <h3 className="mt-4 font-semibold text-[var(--snow)]">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--mist)]">{p.desc}</p>
-                <a
-                  href={PORTFOLIO_EXTERNAL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex text-sm font-medium text-[var(--signal)] underline decoration-[var(--signal)]/50 underline-offset-4 hover:text-[var(--snow)]"
-                >
-                  {d.projects.viewHere}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <ProjectsSection />
 
         <section id="skills" className="section-defer mt-16 scroll-mt-28 sm:mt-20 md:mt-24 md:scroll-mt-28">
           <h2 className="section-title text-xl font-semibold text-[var(--snow)] sm:text-2xl">{d.technical.title}</h2>
@@ -298,7 +307,12 @@ export function HomePageContent() {
                   {EMAIL}
                 </a>{" "}
                 ·{" "}
-                <a className="underline decoration-[var(--signal)]/40 underline-offset-4 hover:text-[var(--snow)]" href={`tel:${PHONE.replace(/\s/g, "")}`}>
+                <a
+                  className="underline decoration-[var(--signal)]/40 underline-offset-4 hover:text-[var(--snow)]"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {PHONE}
                 </a>
               </p>
