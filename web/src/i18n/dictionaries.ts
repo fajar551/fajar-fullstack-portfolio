@@ -110,18 +110,18 @@ const id = {
         keyFeatures:
           "Integrasi WhatsApp Business API, percakapan otomatis, peningkatan waktu respons layanan pelanggan.",
         techStack: "Node.js, OpenAI API, WhatsApp API.",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://admin-chat.genio.id/home",
       },
       {
         id: "cbms-mobile",
-        title: "CBMS Mobile App (React Native + Firebase)",
+        title: "Qwords Internet (React Native + Firebase)",
         desc:
-          "Mengubah sistem billing berbasis web (CBMS) menjadi aplikasi mobile untuk meningkatkan aksesibilitas dan notifikasi pengguna real-time.",
+          "Aplikasi resmi Qwords Internet untuk pelanggan Internetan.id — tagihan, bukti pembayaran, tiket support, dan manajemen akun layanan dalam satu aplikasi mobile (React Native + Firebase).",
         images: ["/projects/cbms-mobile-app/mobile-1.webp", "/projects/cbms-mobile-app/mobile-2.webp"],
         keyFeatures:
           "Dashboard billing mobile, pemantauan invoice & pelacakan pembayaran, push notification (FCM), integrasi notifikasi WhatsApp, dukungan mobile lintas platform.",
         techStack: "React Native, Firebase (FCM), Laravel API, WhatsApp API.",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://play.google.com/store/apps/details?id=com.relabs.portalrelabsapps",
       },
       {
         id: "attendance-app",
@@ -136,14 +136,14 @@ const id = {
       },
       {
         id: "whmcs-billing",
-        title: "Billing System & WHMCS Integration",
+        title: "Qwords Billing System & WHMCS Integration",
         desc:
           "Mengembangkan dan mengoptimalkan sistem billing skala besar terintegrasi WHMCS untuk menangani volume besar invoice klien dan mengotomatisasi provisioning.",
         images: ["/projects/whmcs-integration/cover.png"],
         keyFeatures:
           "Manajemen invoice, billing & provisioning otomatis, keamanan MFA, integrasi penyedia cloud, arsitektur berbasis REST API.",
         techStack: "Laravel, WHMCS, Node.js, REST API, OAuth2, MySQL/PostgreSQL.",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://www.qwords.com/",
       },
       {
         id: "portal-order-qwords",
@@ -154,7 +154,8 @@ const id = {
         keyFeatures:
           "Alur pemesanan multi-produk (hosting, domain, VPS, SSL, email), checkout dinamis per order_type, pemilihan metode pembayaran terintegrasi, manajemen state Redux dengan persistensi, integrasi Internal Order API, deployment berbasis environment (staging/production).",
         techStack: "React 18, React Redux, Bootstrap 5, Sass (SCSS), JavaScript (ES6+).",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl:
+          "https://portal.qwords.com/orderv10/orderhosting?pid=1126&billingcycle=monthly&_gl=1*5y4zbw*_gcl_au*MTk5NTgxODA0NS4xNzY4Mjc5NjU4LjE2NjM3NDM4OS4xNzczMTkxMTMxLjE3NzMxOTExMzA.",
       },
       {
         id: "portal-order-gfn",
@@ -165,7 +166,7 @@ const id = {
         keyFeatures:
           "Alur pemesanan multi-produk (orderhosting, orderdomain, orderserver, orderdomainbackorder, orderproduct, dll), checkout bertahap dengan state global (cart, step, products, slice per produk).",
         techStack: "React 18, React Router DOM 6, React Bootstrap, Sass (SCSS), JavaScript (ES6+).",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://client.goldenfast.net/order/",
       },
       {
         id: "portal-internetan",
@@ -175,6 +176,7 @@ const id = {
         keyFeatures:
           "Billing end-to-end, gateway pembayaran, admin & API ber-permission, modul/addon & hooks, Virtualizor, tema & order form.",
         techStack: "PHP, Laravel 7, Blade/Smarty, Bootstrap 4, jQuery, Sass, Laravel Mix.",
+        projectUrl: "http://portal.internetan.id/",
       },
       {
         id: "portal-gssl",
@@ -184,6 +186,7 @@ const id = {
         keyFeatures:
           "Billing & layanan CBMS, modul gateway/server/registrar, tema & admin, deployment internal (Git).",
         techStack: "Laravel 7, PHP, MySQL, Bootstrap 4, Sass, jQuery, Laravel Mix.",
+        projectUrl: "http://client.gudangssl.id/",
       },
       {
         id: "portal-bikin-website",
@@ -194,6 +197,7 @@ const id = {
           "Pemesanan & manajemen layanan web, billing terpusat, integrasi pembayaran (gateway/modul), arsitektur modular (Laravel Modules), tema & admin, deployment environment (staging/production).",
         techStack:
           "Laravel 7, PHP 7.2+, Blade, Bootstrap 4, jQuery, Sass (SCSS), Laravel Mix (Webpack), MySQL.",
+        projectUrl: "http://client.bikin.website/",
       },
       {
         id: "eto-fintech",
@@ -203,6 +207,7 @@ const id = {
         keyFeatures:
           "E-wallet & pembayaran digital, fitur withdraw (penarikan dana), laporan transaksi (reporting), manajemen produk & e-commerce, sistem keamanan transaksi.",
         techStack: "Java 17, Spring Boot 3, Angular 18, MySQL, REST API.",
+        projectUrl: "http://bank-eto.dimas-maryanto.com/eto-app/login",
       },
       {
         id: "siap-bop-bos",
@@ -212,6 +217,7 @@ const id = {
         keyFeatures:
           "Manajemen data anggaran BOP & BOS, monitoring penyaluran dana, laporan dan audit (reporting), validasi data sekolah, dashboard analitik.",
         techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
+        projectUrl: "https://siap.jakarta.go.id/webapp/#/landingpage",
       },
       {
         id: "bku-bud-dki",
@@ -221,6 +227,8 @@ const id = {
         keyFeatures:
           "Pencatatan transaksi keuangan (BKU), pengelolaan kas masuk & keluar, laporan keuangan (reporting), rekonsiliasi data, dashboard monitoring.",
         techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
+        projectUrl:
+          "https://www.figma.com/design/5CCzAlrFAsZuMEYctXqz0v/BKU-BUD-PPKD?node-id=113-1612&t=EFTwU3bWEwMhmQFU-0",
       },
     ],
   },
@@ -389,18 +397,18 @@ export const en: Dictionary = {
         keyFeatures:
           "WhatsApp Business API integration, automated conversations, faster customer service response times.",
         techStack: "Node.js, OpenAI API, WhatsApp API.",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://admin-chat.genio.id/home",
       },
       {
         id: "cbms-mobile",
-        title: "CBMS Mobile App (React Native + Firebase)",
+        title: "Qwords Internet (React Native + Firebase)",
         desc:
-          "Transformed a web-based billing system (CBMS) into a mobile application to improve accessibility and enable real-time user notifications.",
+          "Official Qwords Internet mobile app for Internetan.id customers—invoices, payment proof uploads, support tickets, and account management in one React Native + Firebase app.",
         images: ["/projects/cbms-mobile-app/mobile-1.webp", "/projects/cbms-mobile-app/mobile-2.webp"],
         keyFeatures:
           "Mobile billing dashboard, invoice monitoring & payment tracking, push notifications (Firebase Cloud Messaging), WhatsApp notification integration, cross-platform mobile support.",
         techStack: "React Native, Firebase (FCM), Laravel API, WhatsApp API.",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://play.google.com/store/apps/details?id=com.relabs.portalrelabsapps",
       },
       {
         id: "attendance-app",
@@ -415,14 +423,14 @@ export const en: Dictionary = {
       },
       {
         id: "whmcs-billing",
-        title: "Billing System & WHMCS Integration",
+        title: "Qwords Billing System & WHMCS Integration",
         desc:
           "Developed and optimized a high-scale billing system integrated with WHMCS to handle large volumes of client invoices and automate provisioning processes.",
         images: ["/projects/whmcs-integration/cover.png"],
         keyFeatures:
           "Invoice management system, automated billing & provisioning, multi-factor authentication (MFA) security, integration with cloud providers, REST API–based architecture.",
         techStack: "Laravel, WHMCS, Node.js, REST API, OAuth2, MySQL/PostgreSQL.",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://www.qwords.com/",
       },
       {
         id: "portal-order-qwords",
@@ -433,7 +441,8 @@ export const en: Dictionary = {
         keyFeatures:
           "Multi-product ordering flow (hosting, domain, VPS, SSL, email), dynamic checkout per order_type, integrated payment method selection, Redux-based state management with persistence, internal Order API integration, environment-based deployment (staging/production).",
         techStack: "React 18, React Redux, Bootstrap 5, Sass (SCSS), JavaScript (ES6+).",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl:
+          "https://portal.qwords.com/orderv10/orderhosting?pid=1126&billingcycle=monthly&_gl=1*5y4zbw*_gcl_au*MTk5NTgxODA0NS4xNzY4Mjc5NjU4LjE2NjM3NDM4OS4xNzczMTkxMTMxLjE3NzMxOTExMzA.",
       },
       {
         id: "portal-order-gfn",
@@ -444,7 +453,7 @@ export const en: Dictionary = {
         keyFeatures:
           "Multi-product ordering flow (orderhosting, orderdomain, orderserver, orderdomainbackorder, orderproduct, etc.), staged checkout with global state (cart, step, products, per-product slices).",
         techStack: "React 18, React Router DOM 6, React Bootstrap, Sass (SCSS), JavaScript (ES6+).",
-        projectUrl: "https://fajarhabibzaelani.vercel.app",
+        projectUrl: "https://client.goldenfast.net/order/",
       },
       {
         id: "portal-internetan",
@@ -454,6 +463,7 @@ export const en: Dictionary = {
         keyFeatures:
           "End-to-end billing, payment gateways, admin & permissioned API, modules/add-ons & hooks, Virtualizor, themes & order forms.",
         techStack: "PHP, Laravel 7, Blade/Smarty, Bootstrap 4, jQuery, Sass, Laravel Mix.",
+        projectUrl: "http://portal.internetan.id/",
       },
       {
         id: "portal-gssl",
@@ -463,6 +473,7 @@ export const en: Dictionary = {
         keyFeatures:
           "CBMS billing & services, gateway/server/registrar modules, themes & admin, internal deployment (Git).",
         techStack: "Laravel 7, PHP, MySQL, Bootstrap 4, Sass, jQuery, Laravel Mix.",
+        projectUrl: "http://client.gudangssl.id/",
       },
       {
         id: "portal-bikin-website",
@@ -473,6 +484,7 @@ export const en: Dictionary = {
           "Web service ordering & management, centralized billing, payment integrations (gateway/modules), modular architecture (Laravel Modules), themes & admin, staging/production deployment.",
         techStack:
           "Laravel 7, PHP 7.2+, Blade, Bootstrap 4, jQuery, Sass (SCSS), Laravel Mix (Webpack), MySQL.",
+        projectUrl: "http://client.bikin.website/",
       },
       {
         id: "eto-fintech",
@@ -482,6 +494,7 @@ export const en: Dictionary = {
         keyFeatures:
           "E-wallet & digital payments, withdrawals, transaction reporting, product & e-commerce management, transaction security.",
         techStack: "Java 17, Spring Boot 3, Angular 18, MySQL, REST API.",
+        projectUrl: "http://bank-eto.dimas-maryanto.com/eto-app/login",
       },
       {
         id: "siap-bop-bos",
@@ -491,6 +504,7 @@ export const en: Dictionary = {
         keyFeatures:
           "BOP & BOS budget data management, disbursement monitoring, reporting & audit, school data validation, analytics dashboards.",
         techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
+        projectUrl: "https://siap.jakarta.go.id/webapp/#/landingpage",
       },
       {
         id: "bku-bud-dki",
@@ -500,6 +514,8 @@ export const en: Dictionary = {
         keyFeatures:
           "Financial transaction recording (BKU), cash in/out management, financial reporting, data reconciliation, monitoring dashboards.",
         techStack: "Java 8, Spring Boot 2, Oracle, Angular 8, REST API.",
+        projectUrl:
+          "https://www.figma.com/design/5CCzAlrFAsZuMEYctXqz0v/BKU-BUD-PPKD?node-id=113-1612&t=EFTwU3bWEwMhmQFU-0",
       },
     ],
   },
