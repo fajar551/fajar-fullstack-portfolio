@@ -104,18 +104,18 @@ export function ProjectsSection() {
         >
           <button
             type="button"
-            className="link-pill cursor-pointer disabled:pointer-events-none disabled:opacity-40"
+            className="link-pill cursor-pointer font-bold disabled:pointer-events-none disabled:opacity-40"
             disabled={page <= 0}
             onClick={() => setPage((n) => Math.max(0, n - 1))}
           >
             {d.projects.paginationPrev}
           </button>
-          <span className="font-[family-name:var(--font-space-mono)] text-xs text-[var(--caption)]">
+          <span className="font-[family-name:var(--font-space-mono)] text-xs font-bold text-[var(--caption)]">
             {d.projects.paginationPage(page + 1, totalPages)}
           </span>
           <button
             type="button"
-            className="link-pill cursor-pointer disabled:pointer-events-none disabled:opacity-40"
+            className="link-pill cursor-pointer font-bold disabled:pointer-events-none disabled:opacity-40"
             disabled={page >= totalPages - 1}
             onClick={() => setPage((n) => Math.min(totalPages - 1, n + 1))}
           >
