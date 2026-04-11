@@ -121,7 +121,7 @@ export function SiteHeader() {
             href="#"
             className="min-h-11 min-w-[3rem] shrink-0 py-2 font-semibold tracking-tight text-[var(--snow)]"
           >
-            FHZ<span className="text-[var(--signal)]">.</span>
+            FHZ<span className="text-[var(--ember)]">.</span>
           </a>
 
           <nav
@@ -143,7 +143,7 @@ export function SiteHeader() {
             <button
               ref={btnRef}
               type="button"
-              className="mobile-nav-trigger inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--toggle-border)] bg-[var(--toggle-bg)] text-[var(--snow)] transition hover:border-[var(--signal)] hover:text-[var(--signal)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)] active:scale-[0.98]"
+              className="mobile-nav-trigger inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--toggle-border)] bg-[var(--toggle-bg)] text-[var(--snow)] transition hover:border-[var(--ember)] hover:text-[var(--ember)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ember)] active:scale-[0.98]"
               aria-expanded={open}
               aria-controls={panelId}
               aria-label={open ? d.nav.closeMenu : d.nav.openMenu}

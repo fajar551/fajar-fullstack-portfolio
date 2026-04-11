@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Space_Mono } from "next/font/google";
+import { ClientScrollChrome } from "@/components/ClientScrollChrome";
 import { LocaleProvider } from "@/components/LocaleProvider";
-import { ScrollChrome } from "@/components/ScrollChrome";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -18,7 +18,7 @@ const spaceMono = Space_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
-  preload: true,
+  preload: false,
   adjustFontFallback: true,
 });
 
@@ -52,7 +52,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LocaleProvider>
             <div className="aurora-canvas" aria-hidden />
-            <ScrollChrome />
+            <ClientScrollChrome />
             {children}
           </LocaleProvider>
         </ThemeProvider>

@@ -42,7 +42,7 @@ export function ProjectsSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
+                className="group block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ember)]"
                 aria-label={`${proj.title} — ${d.projects.viewHere}`}
               >
                 <div className={`grid gap-2 ${two ? "grid-cols-2" : "grid-cols-1"}`}>
@@ -61,14 +61,14 @@ export function ProjectsSection() {
                     />
                   ))}
                 </div>
-                <h3 className="mt-4 font-semibold text-[var(--snow)] underline-offset-4 transition-colors group-hover:text-[var(--signal)] group-hover:underline group-hover:decoration-[var(--signal)]/50">
+                <h3 className="mt-4 font-semibold text-[var(--snow)] underline-offset-4 transition-colors group-hover:text-[var(--ember)] group-hover:underline group-hover:decoration-[var(--ember)]/50">
                   {proj.title}
                 </h3>
               </a>
               <p className="mt-2 text-sm leading-relaxed text-[var(--mist)]">{proj.desc}</p>
               {proj.keyFeatures ? (
                 <div className="mt-3">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--signal)]">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--ember)]">
                     {d.projects.labelKeyFeatures}
                   </p>
                   <p className="mt-1 text-xs leading-relaxed text-[var(--mist)]">{proj.keyFeatures}</p>
@@ -76,7 +76,7 @@ export function ProjectsSection() {
               ) : null}
               {proj.techStack ? (
                 <div className="mt-3">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--signal)]">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--ember)]">
                     {d.projects.labelTechStack}
                   </p>
                   <p className="mt-1 font-[family-name:var(--font-space-mono)] text-[0.7rem] leading-relaxed text-[var(--caption)]">
@@ -88,7 +88,7 @@ export function ProjectsSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex text-sm font-medium text-[var(--signal)] underline decoration-[var(--signal)]/50 underline-offset-4 hover:text-[var(--snow)]"
+                className="mt-4 inline-flex text-sm font-medium text-[var(--ember)] underline decoration-[var(--ember)]/50 underline-offset-4 hover:text-[var(--snow)]"
               >
                 {d.projects.viewHere}
               </a>

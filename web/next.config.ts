@@ -2,6 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    /** Mengurangi CSS render-blocking (Lighthouse): menyisipkan stylesheet ke HTML di production. */
+    inlineCss: true,
+    /** Import per-ikon dari react-icons agar tree-shaking lebih ketat & bundle lebih kecil. */
+    optimizePackageImports: ["react-icons"],
+  },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
   },

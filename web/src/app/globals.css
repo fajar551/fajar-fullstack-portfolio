@@ -222,7 +222,7 @@ body {
   width: 100%;
   height: 1px;
   left: 0;
-  background: linear-gradient(90deg, transparent, var(--signal), transparent);
+  background: linear-gradient(90deg, transparent, var(--ember), transparent);
   opacity: var(--orbit-line-opacity);
   animation: orbit-lines 11s ease-in-out infinite;
 }
@@ -272,7 +272,7 @@ body {
 .typewriter-caret {
   display: inline;
   margin-left: 0.06em;
-  color: var(--signal);
+  color: var(--ember);
   font-weight: 700;
   line-height: inherit;
   vertical-align: -0.05em;
@@ -299,7 +299,7 @@ body {
 }
 
 .btn-primary:focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid var(--ember);
   outline-offset: 3px;
 }
 
@@ -478,24 +478,18 @@ body {
   height: 1.65rem;
 }
 
-/* Kartu / slab panel — hover lift selaras kartu Proyek pilihan */
+/* Kartu / slab panel — angkat halus saat hover (hanya perangkat yang benar-benar bisa hover) */
 .slab {
+  position: relative;
+  z-index: 0;
   background: linear-gradient(160deg, var(--slab-bg-top), var(--slab-bg-bottom));
   border: 1px solid var(--slab-border);
   border-radius: var(--radius-slab);
   box-shadow: var(--shadow-orbit);
+  transform: translate3d(0, 0, 0);
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.slab:hover {
-  transform: translateY(-0.25rem);
-  box-shadow: 0 20px 50px color-mix(in srgb, var(--snow) 8%, transparent);
-}
-
-html.dark .slab:hover {
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.42);
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Judul section — animasi reveal halus */
@@ -522,25 +516,49 @@ html.dark .slab:hover {
   box-shadow: var(--polaroid-shadow);
   transform: rotate(-2.5deg);
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.polaroid:hover {
-  transform: rotate(-2.5deg) translateY(-0.25rem);
-  box-shadow: 0 28px 58px color-mix(in srgb, var(--snow) 10%, transparent);
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .polaroid--tilt-right {
   transform: rotate(2deg);
 }
 
+/* Hover kartu: tanpa @media (hover: hover) agar tetap jalan di laptop sentuh & peramban yang melaporkan coarse pointer */
+.slab:hover {
+  z-index: 2;
+  transform: translate3d(0, -6px, 0);
+  box-shadow:
+    0 12px 28px color-mix(in srgb, var(--snow) 6%, transparent),
+    0 28px 56px color-mix(in srgb, var(--snow) 9%, transparent);
+}
+
+html.dark .slab:hover {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 32px 64px rgba(0, 0, 0, 0.42);
+}
+
+.polaroid:hover {
+  transform: rotate(-2.5deg) translate3d(0, -6px, 0);
+  box-shadow: 0 28px 58px color-mix(in srgb, var(--snow) 10%, transparent);
+}
+
 .polaroid--tilt-right:hover {
-  transform: rotate(2deg) translateY(-0.25rem);
+  transform: rotate(2deg) translate3d(0, -6px, 0);
 }
 
 html.dark .polaroid:hover {
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+}
+
+.skill-chip:hover {
+  z-index: 1;
+  transform: translate3d(0, -4px, 0);
+  border-color: color-mix(in srgb, var(--ember) 38%, var(--skill-chip-border));
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--snow) 6%, transparent);
+}
+
+html.dark .skill-chip:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
 .polaroid .polaroid__img {
@@ -622,8 +640,10 @@ html.dark .mobile-nav-link {
   text-transform: uppercase;
 }
 
-/* Skill chips */
+/* Skill chips — lift ringan selaras kartu slab */
 .skill-chip {
+  position: relative;
+  z-index: 0;
   display: inline-flex;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
@@ -631,6 +651,11 @@ html.dark .mobile-nav-link {
   background: var(--skill-chip-bg);
   border: 1px solid var(--skill-chip-border);
   color: var(--mist);
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 /* Bingkai putus-putus foto hero — gradien tombol CV (statis) */
@@ -752,11 +777,17 @@ html.dark .mobile-nav-link {
     opacity: 1;
     transform: none;
   }
+  /* Kartu: tetap angkat sedikit; transisi dipersingkat (bukan dimatikan) agar tidak “mati” di Windows + reduce motion */
   .slab {
-    transition: none;
+    transition:
+      transform 0.14s ease,
+      box-shadow 0.14s ease;
   }
-  .slab:hover {
-    transform: none;
+  .skill-chip {
+    transition:
+      transform 0.14s ease,
+      border-color 0.14s ease,
+      box-shadow 0.14s ease;
   }
   .tech-marquee__track {
     animation-duration: 72s !important;

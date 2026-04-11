@@ -1,12 +1,43 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useId } from "react";
 import { useDict, useLocale } from "@/components/LocaleProvider";
-import { ProjectsSection } from "@/components/ProjectsSection";
 import { SiteHeader } from "@/components/SiteHeader";
-import TechMarquee from "@/components/TechMarquee";
 import { Typewriter } from "@/components/Typewriter";
+
+const TechMarquee = dynamic(() => import("@/components/TechMarquee"), {
+  loading: () => (
+    <div
+      className="min-h-[5.5rem] rounded-xl bg-[color-mix(in_srgb,var(--snow)_5%,transparent)] dark:bg-[color-mix(in_srgb,var(--snow)_7%,transparent)]"
+      aria-hidden
+    />
+  ),
+});
+
+const ProjectsSection = dynamic(
+  () => import("@/components/ProjectsSection").then((m) => ({ default: m.ProjectsSection })),
+  {
+    loading: () => (
+      <section
+        className="section-defer mt-16 min-h-[28rem] scroll-mt-28 sm:mt-20 md:mt-24 md:scroll-mt-28"
+        aria-hidden
+      >
+        <div className="h-8 w-44 max-w-[60%] animate-pulse rounded-lg bg-[color-mix(in_srgb,var(--snow)_8%,transparent)] dark:bg-[color-mix(in_srgb,var(--snow)_10%,transparent)]" />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }, (_, i) => (
+            <div
+              key={i}
+              className="slab min-h-[22rem] animate-pulse"
+              aria-hidden
+            />
+          ))}
+        </div>
+      </section>
+    ),
+  },
+);
 import {
   CV_FILENAME,
   EMAIL,
@@ -35,7 +66,7 @@ export function HomePageContent() {
             </p>
             <h1 className="mt-4 text-balance text-3xl font-semibold leading-[1.08] tracking-tight text-[var(--snow)] sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-[clamp(2.75rem,4vw,3.35rem)]">
               Fajar Habib{" "}
-              <span className="bg-gradient-to-r from-[var(--signal)] via-[var(--snow)] to-[var(--violet-hot)] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[var(--ember)] via-[var(--snow)] to-[var(--violet-hot)] bg-clip-text text-transparent">
                 Zaelani
               </span>
             </h1>
@@ -213,7 +244,7 @@ export function HomePageContent() {
               <ul className="mt-6 space-y-3 text-sm text-[var(--snow)]">
                 {d.about.bullets.map((text) => (
                   <li key={text} className="flex gap-2">
-                    <span className="mt-1 text-[var(--signal)]">◆</span>
+                    <span className="mt-1 text-[var(--ember)]">◆</span>
                     <span>{text}</span>
                   </li>
                 ))}
@@ -228,15 +259,15 @@ export function HomePageContent() {
           <h2 className="section-title text-xl font-semibold text-[var(--snow)] sm:text-2xl">{d.technical.title}</h2>
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
             <div className="slab p-5 sm:p-7">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--signal)]">{d.technical.languages}</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--ember)]">{d.technical.languages}</h3>
               <p className="mt-3 text-sm leading-relaxed text-[var(--mist)]">{d.technical.languagesBody}</p>
-              <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-[var(--signal)]">
+              <h3 className="mt-6 text-sm font-semibold uppercase tracking-wider text-[var(--ember)]">
                 {d.technical.framework}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[var(--mist)]">{d.technical.frameworkBody}</p>
             </div>
             <div className="slab p-5 sm:p-7">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--signal)]">{d.technical.tools}</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--ember)]">{d.technical.tools}</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {d.technical.toolsChips.map((s) => (
                   <span key={s} className="skill-chip">
@@ -256,7 +287,7 @@ export function HomePageContent() {
               <h3 className="text-lg font-semibold text-[var(--snow)]">{d.experience.q1.company}</h3>
               <p className="exp-meta mt-2">{d.experience.q1.period}</p>
               <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleFtBandung}</p>
-              <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
+              <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--ember)]">
                 {d.experience.q1.bullets.map((t) => (
                   <li key={t}>{t}</li>
                 ))}
@@ -267,11 +298,11 @@ export function HomePageContent() {
               <h3 className="text-lg font-semibold text-[var(--snow)]">{d.experience.tdi1.company}</h3>
               <div className="mt-5 space-y-8">
                 <div className="relative pl-8">
-                  <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-[var(--signal)] bg-[var(--surface)]" />
-                  <span className="absolute bottom-[-2.25rem] left-[5px] top-5 w-px bg-[var(--signal)]/45" />
+                  <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-[var(--ember)] bg-[var(--surface)]" />
+                  <span className="absolute bottom-[-2.25rem] left-[5px] top-5 w-px bg-[var(--ember)]/45" />
                   <p className="exp-meta">{d.experience.tdi1.period}</p>
                   <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleFtBandung}</p>
-                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--ember)]">
                     {d.experience.tdi1.bullets.map((t) => (
                       <li key={t}>{t}</li>
                     ))}
@@ -279,10 +310,10 @@ export function HomePageContent() {
                 </div>
 
                 <div className="relative pl-8">
-                  <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-[var(--signal)] bg-[var(--surface)]" />
+                  <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-[var(--ember)] bg-[var(--surface)]" />
                   <p className="exp-meta">{d.experience.tdi2.period}</p>
                   <p className="mt-1 text-sm text-[var(--mist)]">{d.experience.roleIntern}</p>
-                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--signal)]">
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--mist)] marker:text-[var(--ember)]">
                     {d.experience.tdi2.bullets.map((t) => (
                       <li key={t}>{t}</li>
                     ))}
@@ -299,12 +330,12 @@ export function HomePageContent() {
               <p className="font-semibold text-[var(--snow)]">{d.footer.cta}</p>
               <p className="mt-2 text-sm text-[var(--mist)]">{LOCATION}</p>
               <p className="mt-1 break-words text-sm text-[var(--mist)] [overflow-wrap:anywhere]">
-                <a className="underline decoration-[var(--signal)]/40 underline-offset-4 hover:text-[var(--snow)]" href={`mailto:${EMAIL}`}>
+                <a className="underline decoration-[var(--ember)]/40 underline-offset-4 hover:text-[var(--snow)]" href={`mailto:${EMAIL}`}>
                   {EMAIL}
                 </a>{" "}
                 ·{" "}
                 <a
-                  className="underline decoration-[var(--signal)]/40 underline-offset-4 hover:text-[var(--snow)]"
+                  className="underline decoration-[var(--ember)]/40 underline-offset-4 hover:text-[var(--snow)]"
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
