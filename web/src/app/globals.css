@@ -48,9 +48,10 @@
   --toggle-bg: #f8fafc;
   --toggle-border: rgba(15, 23, 42, 0.12);
 
-  --caption: rgba(100, 116, 139, 0.85);
-  --caption-muted: rgba(100, 116, 139, 0.75);
-  --caption-faint: rgba(71, 85, 105, 0.9);
+  /* Kontras AA pada slab (#f1f5f9) & putih — hindari slate-500 semitransparan */
+  --caption: #334155;
+  --caption-muted: #475569;
+  --caption-faint: #475569;
   --footer-border: rgba(15, 23, 42, 0.1);
 
   --polaroid-grad-start: #f3f6ff;
@@ -115,9 +116,10 @@ html.dark {
   --toggle-bg: rgba(18, 26, 46, 0.88);
   --toggle-border: rgba(125, 211, 252, 0.22);
 
-  --caption: rgba(159, 179, 209, 0.75);
-  --caption-muted: rgba(159, 179, 209, 0.65);
-  --caption-faint: rgba(191, 210, 240, 0.82);
+  /* Lebih terang di atas slab gelap agar teks kecil (pagination, mono) lolos AA */
+  --caption: #cbd5e1;
+  --caption-muted: #94a3b8;
+  --caption-faint: #94a3b8;
   --footer-border: rgba(125, 211, 252, 0.12);
 
   --polaroid-grad-start: #1a2436;
